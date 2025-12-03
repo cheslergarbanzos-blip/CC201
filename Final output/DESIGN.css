@@ -1,5 +1,4 @@
 /* navigation bar */
-
 nav {
     width: 100%;
     float: left;
@@ -28,15 +27,8 @@ nav {
     flex-wrap: wrap;
 }
 
-/*TITLE PART*/
-h1 {
-    max-width: 700px;
-    margin: 30px auto 20px;
-    padding: 30px;
-    font-size: 3em;
-    color: #000000;
-    text-align: center;
-    text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.525);
-    letter-spacing: 2px;
+#error-message {
+    color: red;
+    display: block;
 }
 
