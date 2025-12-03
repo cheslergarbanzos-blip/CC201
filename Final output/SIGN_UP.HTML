@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <p>Please fill out the form to create an account.</p>
+    
+    <form id="signupForm" onsubmit="handleSignup(event)">
+        <label for="firstname">First Name:</label><br>
+        <input type="text" id="firstname" name="firstname" required><br><br>
+        
+        <label for="lastname">Last Name:</label><br>
+        <input type="text" id="lastname" name="lastname" required><br><br>
+        
+        <label for="middleinitial">Middle Initial:</label><br>
+        <input type="text" id="middleinitial" name="middleinitial" maxlength="1"><br><br>
+        
+        <label for="birthday">Birthday:</label><br>
+        <input type="date" id="birthday" name="birthday" required><br><br>
+        
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+        
+        <label>Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label><br><br>
+        
+        <button type="submit">Sign Up</button>
+    </form>
+    
+    <br>
+    <a href="LOGIN.html">Already have an account? Login</a>
+
+    <script>
+        function handleSignup(e) {
+            e.preventDefault();
+            
+            const firstname = document.getElementById('firstname').value;
+            const lastname = document.getElementById('lastname').value;
+            const middleinitial = document.getElementById('middleinitial').value;
+            const birthday = document.getElementById('birthday').value;
+            const phone = document.getElementById('phone').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            
+            console.log('New user registration:');
+            console.log('Name:', firstname, middleinitial, lastname);
+            console.log('Birthday:', birthday);
+            console.log('Phone:', phone);
+            console.log('Gender:', gender);
+            
+            alert('Account created successfully! You can now login.');
+            document.getElementById('signupForm').reset();
+        }
+    </script>
+</body>
+</html>
