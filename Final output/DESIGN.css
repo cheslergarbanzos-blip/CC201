@@ -5,6 +5,19 @@ body {
     background-repeat: no-repeat;
 }
 
+#wrapper {
+    background-color: white;
+    width: 300px;
+    min-height: 500px;
+    padding: 70px 40px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* LOGIN HTML */
 
 #logo {
@@ -12,9 +25,10 @@ body {
     height: 100px;
     display: block;
     margin: 0 auto 10px auto;
+    padding-bottom: 20px;
 }
 
-.wrapper {
+.login-wrapper {
     background-color: white;
     width: 300px;
     max-height: 400px;
@@ -28,15 +42,14 @@ body {
 }
 
 
-
-#login-button {
+#y-button {
     background-color: rgb(255, 204, 0);
     padding-top: 5px;
     float: right;
     border-radius: 5px;
 }
 
-#email-input, #password-input {
+#input-field {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -45,13 +58,22 @@ body {
     box-sizing: border-box;
 }
 
-#signup-button {
-    padding-top: 10px;
+/* SIGN UP HTML */
+
+.signup-wrapper {
+    background-color: white;
+    width: 300px;
+    max-height: 600px;
+    padding: 70px 40px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-#sign-button-hover {
-
-}
+/* FORGOT PASS HTML */
 
 
 /* NAVIGATION BAR */
