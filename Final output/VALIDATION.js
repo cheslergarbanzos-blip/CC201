@@ -25,6 +25,15 @@ form.addEventListener('submit', (e) => {
         e.preventDefault()
         error_message.innerText = errors.join(". ")
     }
+    else {
+        // Call registerUser if no errors and it's a signup form
+        if (name_input) {
+            registerUser()
+        }
+        else {
+            loginUser()
+        }
+    }
 })
 
 function getSignupFormErrors(name, email, birthday, password, repeatPassword) {
@@ -50,12 +59,13 @@ function getSignupFormErrors(name, email, birthday, password, repeatPassword) {
         errors.push('Repeat password is required')
         repeatpassword_input.parentElement.classList.add('Incorrect')
     }
-    if (password < 8) {
+    if (password.length < 8) {
         errors.push('Password must have 8 characters')
-        password_input.parentElement.classList.add('incorrect')
+        password_input.parentElement.classList.add('Incorrect')
     }
     if (password != repeatPassword) {
         errors.push('Password does not match')
+        repeatpassword_input.parentElement.classList.add('Incorrect')
     }
 
     return errors;
@@ -80,9 +90,77 @@ const allInputs = [name_input, email_input, birthdate_input, password_input, rep
 
 allInputs.forEach(input => {
     input.addEventListener('input', () => {
-        if (input.parentElement.classList.contains('incorrect')) {
-            input.parentElement.remove('incorrect')
+        if (input.parentElement.classList.contains('Incorrect')) {
+            input.parentElement.classList.remove('Incorrect')
             error_message.innerText = ''
         }
     })
 }) 
+
+function registerUser() {
+    const users = JSON.parse(localStorage.getItem('users') || '[]')
+    
+    // Check if email already exists
+    if (users.find(u => u.email === email_input.value)) {
+        error_message.innerText = 'Email already registered!'
+        error_message.classList.add('show')
+        email_input.parentElement.classList.add('Incorrect')
+        return
+    }
+    
+    // Create new user
+    const newUser = {
+        name: name_input.value,
+        email: email_input.value,
+        birthday: birthdate_input.value,
+        password: password_input.value,
+        createdAt: new Date().toISOString()
+    }
+    
+    users.push(newUser)
+    localStorage.setItem('users', JSON.stringify(users))
+    
+    // Show success and redirect to login
+    error_message.classList.remove('show')
+    const successDiv = document.createElement('div')
+    successDiv.className = 'success'
+    successDiv.textContent = 'Registration successful! Redirecting to login...'
+    form.parentElement.insertBefore(successDiv, form)
+    
+    form.reset()
+    
+    setTimeout(() => {
+        successDiv.remove()
+        window.location.href = 'LOGIN.html'
+    }, 2000)
+}
+
+function loginUser() {
+    const users = JSON.parse(localStorage.getItem('users') || '[]')
+    
+    // Check if user exists with matching email and password
+    const user = users.find(u => u.email === email_input.value && u.password === password_input.value)
+    
+    if (!user) {
+        error_message.innerText = 'Invalid email or password'
+        email_input.parentElement.classList.add('Incorrect')
+        password_input.parentElement.classList.add('Incorrect')
+        return
+    }
+    
+    // Store logged in user
+    localStorage.setItem('currentUser', JSON.stringify(user))
+    
+    // Show success and redirect
+    const successDiv = document.createElement('div')
+    successDiv.className = 'success'
+    successDiv.textContent = 'Login successful! Redirecting...'
+    form.parentElement.insertBefore(successDiv, form)
+    
+    form.reset()
+    
+    setTimeout(() => {
+        successDiv.remove()
+        window.location.href = 'HOMEPAGE.html'
+    }, 2000)
+}
