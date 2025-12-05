@@ -1,7 +1,86 @@
-/* navigation bar */
+body {
+    background-color: #7F5638;
+    background-image: url("assets/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#wrapper {
+    background-color: white;
+    width: 300px;
+    min-height: 500px;
+    padding: 70px 40px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* LOGIN HTML */
+
+#logo {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto 10px auto;
+    padding-bottom: 20px;
+}
+
+.login-wrapper {
+    background-color: white;
+    width: 300px;
+    max-height: 400px;
+    padding: 70px 40px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#y-button {
+    background-color: rgb(255, 204, 0);
+    padding-top: 5px;
+    float: right;
+    border-radius: 5px;
+}
+
+#input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ffc800;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* SIGN UP HTML */
+
+.signup-wrapper {
+    background-color: white;
+    width: 300px;
+    max-height: 600px;
+    padding: 70px 40px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* FORGOT PASS HTML */
+
+
+/* NAVIGATION BAR */
 nav {
     width: 100%;
     float: left;
+  
 }
 
 .navbar {
@@ -17,6 +96,8 @@ nav {
     z-index: 1000;
 }
 
+
+
 .nav-links {
     font-size: 25px;
     max-width: 1200px;
@@ -30,5 +111,6 @@ nav {
 #error-message {
     color: red;
     display: block;
+    text-align: center;
 }
 
