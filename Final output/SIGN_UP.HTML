@@ -10,38 +10,38 @@
 <body>
     <div class= "signup-wrapper">
         <div id = "wrapper">
-        <img id= "logo" src="assets/logo.png">
-        <form id="form">
-        <div>
-            <label for="name-input"></label>
-            <input type="text" id="input-field" name="name" placeholder= "Full Name">
+            <img id= "logo" src="assets/logo.png">
+            <h1>Sign Up</h1>
+            <p id="error-message"></p>
+            
+            <form id="form">
+                <div>
+                    <label for="name-input"></label>
+                    <input type="text" id="name-input" name="name" placeholder= "Full Name">
+                </div>
+                <div>
+                    <label for="email-input"></label>
+                    <input type="text" id="email-input" name="email" placeholder= "Email">
+                </div>
+                <div>
+                    <label for="birthday-input"></label>
+                    <input type="date" id="birthday-input" name="birthday">
+                </div>
+                <div>
+                    <label for="password-input"></label>
+                    <input type="text" id="password-input" name="password" placeholder= "Password">
+                </div>
+                <div>
+                    <label for="repeat-password-input"></label>
+                    <input type="text" id="repeat-password-input" name="repeat-password" placeholder= "Repeat Password">
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            
+            <a href="LOGIN.html">Already have an account? Login</a>
         </div>
-        <div>
-            <label for="email-input"></label>
-            <input type="text" id="input-field" name="email" placeholder= "Email">
-        </div>
-        <div>
-            <label for="date-input"></label>
-            <input type="date" id="input-field" name="birthday">
-        </div>
-        <div>
-            <label for="password-input"></label>
-                <input type="text" id="input-field" name="password" placeholder= "Password">
-            </div>
-        <div>
-            <label for="repeat-password-input"></label>
-            <input type="text" id="input-field" name="repeat-password" placeholder= "Repeat Password">
-        </div>
-        <button type="submit">Sign Up</button>
-    </form>
+    </div>
 
-        <script type="text/javascript" src="VALIDATION.js" defer></script>
-        <a href="LOGIN.html">Already have an account? Login</a>
-        <button id = "y-button" type="submit">Sign Up</button> <button id = "y-button" type="submit">Sign Up</button>
-        <p id="error-message"></p>
-        </div>
-        
-
-         </div>
+    <script type="text/javascript" src="VALIDATION.js" defer></script>
 </body>
 </html>
