@@ -2,6 +2,13 @@
     font-family: 'Trebuchet MS';
 }
 
+#y-button {
+    margin-top: 3px;
+    background-color: rgb(255, 204, 0);
+    float: right;
+    border-radius: 5px;
+}
+
 
 body {
     background-color: #7F5638;
@@ -51,13 +58,7 @@ body {
     padding-top: 5px;
 }
 
-#y-button {
-    margin-top: 3px;
-    background-color: rgb(255, 204, 0);
-    padding-top: 5px;
-    float: right;
-    border-radius: 5px;
-}
+
 
 #input-field {
     width: 100%;
@@ -96,6 +97,7 @@ nav {
 .navbar {
    position: relative;
     width: 950px;
+    max-height: 100px;
     padding: 25px;
     background: hsl(63, 100%, 50%);
     border-bottom: 4px solid #eaff009e;
@@ -111,7 +113,7 @@ nav {
     margin: 0;
     display: flex;
     justify-content: left;
-    gap: 10px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
@@ -130,6 +132,45 @@ nav {
     margin: 0 auto;
 }
 
-#homepage-text {
+#homepage-content {
     padding-left: 30px;
+    padding-top: 100px;
+}
+
+/* PROFILE */
+.profile-wrapper {
+    padding-left: 50px;
+    padding-top: 100px;
+}
+
+#edit-btn, 
+#delete-btn {
+    margin-top: 3px;
+    margin-left: 10px;
+    background-color: rgb(255, 204, 0);
+    float: left;
+    border-radius: 5px;
+}
+
+#search-field {
+    width: 500px;
+    margin: 2px 0;
+    border: 1px solid #ffc800;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#search-btn {
+    margin: auto 0;
+    margin-top: 3px;
+    margin-left: 10px;
+    background-color: rgb(255, 204, 0);
+    border-radius: 5px;
+}
+
+/* ABOUT PAGE */
+
+.about-wrapper {
+    padding-left: 50px;
+    padding-top: 100px;
 }
