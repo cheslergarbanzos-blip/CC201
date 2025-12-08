@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reviews — Iloilo Destinations</title>
+  <link rel="stylesheet" href="DESIGN.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="HOMEPAGE.html">Home</a>
+      <a href="VIEW_PROFILE.html">Profile</a>
+      <a href="REVIEWS.html">Reviews</a>
+      <a href="ABOUT.html">About</a>
+    </div>
+  </nav>
+
+  <div class="reviews-wrapper">
+    <h1>Iloilo Destinations — Community Reviews</h1>
+
+    <div class="destination-row">
+      <label for="destination-select"><strong>Choose a destination:</strong></label>
+      <select id="destination-select"></select>
+      <span id="destination-stats" class="small-muted"></span>
+    </div>
+
+    <div id="post-area" class="review-form">
+      <h2>Post a Review</h2>
+      <p id="reviews-error" class="small-error"></p>
+
+      <div>
+        <label for="review-title">Title</label>
+        <input id="review-title" type="text" placeholder="Short title">
+      </div>
+
+      <div>
+        <label for="review-rating">Rating</label>
+        <select id="review-rating">
+          <option value="5">★★★★★ (5)</option>
+          <option value="4">★★★★ (4)</option>
+          <option value="3">★★★ (3)</option>
+          <option value="2">★★ (2)</option>
+          <option value="1">★ (1)</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="review-body">Review</label>
+        <textarea id="review-body" rows="5" placeholder="Write your review..."></textarea>
+      </div>
+
+      <button id="post-review">Post Review</button>
+    </div>
+
+    <hr>
+
+    <div class="reviews-controls">
+      <label for="sort-select">Sort:</label>
+      <select id="sort-select">
+        <option value="newest">Newest</option>
+        <option value="highest">Highest rating</option>
+        <option value="oldest">Oldest</option>
+      </select>
+    </div>
+
+    <div id="reviews-list" class="reviews-list"></div>
+  </div>
+
+  <script type="text/javascript" src="REVIEWS.js" defer></script>
+</body>
+</html>
