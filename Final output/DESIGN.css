@@ -1,3 +1,8 @@
+* {
+    font-family: 'Trebuchet MS';
+}
+
+
 body {
     background-color: #7F5638;
     background-image: url("assets/background.png");
@@ -41,19 +46,20 @@ body {
     transform: translate(-50%, -50%);
 }
 
+#signup-link,
+#login-link {
+    padding-top: 5px;
+}
 
 #y-button {
+    margin-top: 3px;
     background-color: rgb(255, 204, 0);
     padding-top: 5px;
     float: right;
     border-radius: 5px;
 }
 
-#email-input,
-#password-input,
-#name-input,
-#birthday-input,
-#repeat-password-input {
+#input-field {
     width: 100%;
     padding: 10px;
     margin: 2px 0;
@@ -88,27 +94,24 @@ nav {
 }
 
 .navbar {
-   position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    padding: 25x 30px;
+   position: relative;
+    width: 950px;
+    padding: 25px;
     background: hsl(63, 100%, 50%);
     border-bottom: 4px solid #eaff009e;
     box-shadow: 0 3px 0 #0000004c;
-    z-index: 1000;
+    margin: 0;
 }
 
 
 
 .nav-links {
     font-size: 25px;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0;
     display: flex;
     justify-content: left;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
@@ -118,3 +121,15 @@ nav {
     text-align: center;
 }
 
+/* HOMEPAGE */
+
+.homepage-wrapper {
+    background-color: white;
+    width: 1000px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+#homepage-text {
+    padding-left: 30px;
+}
