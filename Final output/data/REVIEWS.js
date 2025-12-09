@@ -1,5 +1,3 @@
-// REVIEWS.js (simple, beginner-friendly)
-
 // List of places in Iloilo
 const DESTINATIONS = [
   { id: 'iloilo-river', name: 'Iloilo River Esplanade' },
