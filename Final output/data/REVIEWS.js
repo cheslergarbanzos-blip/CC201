@@ -169,7 +169,7 @@ postBtn.addEventListener('click', () => {
   titleInput.value = ''
   ratingSelect.value = '5'
   bodyInput.value = ''
-  
+
   renderReviews()
 })
 
@@ -179,3 +179,64 @@ if (sortSelect) sortSelect.addEventListener('change', renderReviews)
 
 // Start
 window.addEventListener('DOMContentLoaded', renderReviews)
+
+
+// Function to display popular reviews on homepage
+function displayPopularReviews() {
+  const container = document.getElementById('popular-reviews')
+  if (!container) return
+
+  const reviews = loadReviews()
+  
+  if (reviews.length === 0) {
+    container.innerHTML = '<p>No reviews yet. Be the first to post one!</p>'
+    return
+  }
+
+  // Sort by likes (most liked first), then take top 3
+  const popular = reviews
+    .sort((a, b) => (b.likes || 0) - (a.likes || 0))
+    .slice(0, 3)
+
+  container.innerHTML = ''
+
+  popular.forEach(r => {
+    const card = document.createElement('div')
+    card.className = 'popular-review-card'
+    
+    const title = document.createElement('h3')
+    title.textContent = r.title
+    card.appendChild(title)
+
+    const rating = document.createElement('div')
+    rating.className = 'review-rating'
+    rating.textContent = '★'.repeat(r.rating) + '☆'.repeat(5-r.rating)
+    card.appendChild(rating)
+
+    const dest = document.createElement('p')
+    dest.innerHTML = `<strong>Destination:</strong> ${escapeHtml(r.destination)}`
+    card.appendChild(dest)
+
+    const body = document.createElement('p')
+    const preview = r.body.length > 150 ? r.body.substring(0, 150) + '...' : r.body
+    body.textContent = preview
+    card.appendChild(body)
+
+    const meta = document.createElement('p')
+    meta.className = 'review-meta'
+    meta.textContent = `By ${r.authorName || 'Anonymous'} · ${r.likes || 0} likes`
+    card.appendChild(meta)
+
+    const link = document.createElement('a')
+    link.href = 'REVIEWS.html?destination=' + encodeURIComponent(r.destination)
+    link.textContent = 'View all reviews for this destination →'
+    card.appendChild(link)
+
+    container.appendChild(card)
+  })
+}
+
+// If on homepage, show popular reviews
+if (document.getElementById('popular-reviews')) {
+  window.addEventListener('DOMContentLoaded', displayPopularReviews)
+}
