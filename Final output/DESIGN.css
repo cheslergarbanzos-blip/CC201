@@ -17,6 +17,26 @@
     text-align: center;
 }
 
+.alert-danger {
+    background-color: #f8d7da !important;
+    border: 2px solid #dc3545 !important;
+    color: #721c24 !important;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    margin: 10px 0 !important;
+    max-width: 100% !important;
+}
+
+.alert-success {
+    background-color: #d4edda !important;
+    border: 2px solid #28a745 !important;
+    color: #155724 !important;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    margin: 10px 0 !important;
+    max-width: 100% !important;
+}
+
 
 body {
     background-color: #7F5638;
@@ -27,7 +47,7 @@ body {
 
 #wrapper {
     background-color: white;
-    width: 300px;
+    width: 900px;
     min-height: 500px;
     padding: 70px 40px;
     border-radius: 5px;
@@ -64,11 +84,11 @@ body {
 #signup-link,
 #login-link {
     padding-top: 5px;
+    text-decoration: none;
 }
 
 
-
-/* INPUT FIELDS - add after #input-field */
+/* INPUT FIELDS*/
 #email-input,
 #password-input,
 #name-input,
@@ -92,9 +112,9 @@ body {
 
 .signup-wrapper {
     background-color: white;
-    width: 300px;
-    max-height: 600px;
-    padding: 70px 40px;
+    width: 320px;
+    max-height: 550px;
+    padding: 50px 35px;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: absolute;
@@ -336,5 +356,4 @@ nav {
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: rgb(255, 204, 0);
-
 }
