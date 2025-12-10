@@ -1,17 +1,7 @@
-// REVIEWS.js (simple, beginner-friendly)
-
-// List of places in Iloilo
-const DESTINATIONS = [
-  { id: 'iloilo-river', name: 'Iloilo River Esplanade' },
-  { id: 'miagao-church', name: 'Miagao Church' },
-  { id: 'molo-church', name: 'Molo Church' },
-  { id: 'jaro-cathedral', name: 'Jaro Cathedral' },
-  { id: 'gigantes-islands', name: 'Gigantes Islands' },
-  { id: 'guimaras-island', name: 'Guimaras Island' }
-]
+// REVIEWS.js — user types destination instead of selecting
 
 // Find elements on the page
-const destSelect = document.getElementById('destination-select')
+const destInput = document.getElementById('destination-input')
 const titleInput = document.getElementById('review-title')
 const ratingSelect = document.getElementById('review-rating')
 const bodyInput = document.getElementById('review-body')
@@ -48,26 +38,15 @@ function makeId() {
   return 'r' + Math.random().toString(36).substring(2, 9)
 }
 
-// Put destinations in the select box
-function fillDestinations() {
-  destSelect.innerHTML = ''
-  DESTINATIONS.forEach(d => {
-    const o = document.createElement('option')
-    o.value = d.id
-    o.textContent = d.name
-    destSelect.appendChild(o)
-  })
-
-  // If page URL has ?destination=id, select it
-  const p = new URLSearchParams(window.location.search)
-  const d = p.get('destination')
-  if (d && DESTINATIONS.some(x => x.id === d)) destSelect.value = d
-}
-
-// Show reviews for selected destination
+// Show reviews for typed destination
 function renderReviews() {
-  const dest = destSelect.value
-  const all = loadReviews().filter(r => r.destination === dest)
+  const dest = destInput.value.trim().toLowerCase()
+  if (!dest) {
+    listEl.textContent = 'Enter a destination to see reviews.'
+    return
+  }
+
+  const all = loadReviews().filter(r => r.destination.toLowerCase() === dest)
 
   // sort
   const sort = sortSelect ? sortSelect.value : 'newest'
@@ -77,7 +56,7 @@ function renderReviews() {
 
   listEl.innerHTML = ''
   if (all.length === 0) {
-    listEl.textContent = 'No reviews yet for this place.'
+    listEl.textContent = 'No reviews yet for this destination.'
     return
   }
 
@@ -102,7 +81,7 @@ function renderReviews() {
 
     const actions = document.createElement('div')
 
-    // Like button (simple)
+    // Like button
     const likeBtn = document.createElement('button')
     likeBtn.textContent = `Like (${r.likes || 0})`
     likeBtn.addEventListener('click', () => {
@@ -116,7 +95,7 @@ function renderReviews() {
     })
     actions.appendChild(likeBtn)
 
-    // If current user wrote this, show delete
+    // Delete (owner only)
     if (user && user.email && r.authorEmail === user.email) {
       const del = document.createElement('button')
       del.textContent = 'Delete'
@@ -146,13 +125,13 @@ function escapeHtml(str) {
 // Post a new review
 postBtn.addEventListener('click', () => {
   errorEl.textContent = ''
-  const dest = destSelect.value
+  const dest = destInput.value.trim()
   const title = titleInput.value.trim()
   const body = bodyInput.value.trim()
   const rating = parseInt(ratingSelect.value, 10)
   const user = getCurrentUser()
 
-  if (!dest) { errorEl.textContent = 'Choose a destination.'; destSelect.focus(); return }
+  if (!dest) { errorEl.textContent = 'Enter a destination.'; destInput.focus(); return }
   if (!title) { errorEl.textContent = 'Title is required.'; titleInput.focus(); return }
   if (!body) { errorEl.textContent = 'Write something.'; bodyInput.focus(); return }
   if (!rating || rating < 1 || rating > 5) { errorEl.textContent = 'Pick a rating.'; ratingSelect.focus(); return }
@@ -173,6 +152,7 @@ postBtn.addEventListener('click', () => {
   saveReviews(reviews)
 
   // clear form
+  destInput.value = ''
   titleInput.value = ''
   ratingSelect.value = '5'
   bodyInput.value = ''
@@ -181,16 +161,11 @@ postBtn.addEventListener('click', () => {
   renderReviews()
 })
 
-// When destination or sort changes, re-render
-destSelect.addEventListener('change', () => {
-  // update url so users can share
-  history.replaceState(null, '', location.pathname + '?destination=' + destSelect.value)
-  renderReviews()
-})
+// When destination input or sort changes, re-render
+destInput.addEventListener('input', renderReviews)
 if (sortSelect) sortSelect.addEventListener('change', renderReviews)
 
 // Start
 window.addEventListener('DOMContentLoaded', () => {
-  fillDestinations()
   renderReviews()
 })
