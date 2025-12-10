@@ -1,16 +1,4 @@
-<<<<<<< HEAD
 // REVIEWS.js — user types destination instead of selecting
-=======
-// List of places in Iloilo
-const DESTINATIONS = [
-  { id: 'iloilo-river', name: 'Iloilo River Esplanade' },
-  { id: 'miagao-church', name: 'Miagao Church' },
-  { id: 'molo-church', name: 'Molo Church' },
-  { id: 'jaro-cathedral', name: 'Jaro Cathedral' },
-  { id: 'gigantes-islands', name: 'Gigantes Islands' },
-  { id: 'guimaras-island', name: 'Guimaras Island' }
-]
->>>>>>> 62d4e9f87c9b8101b25028734704c2129089ded6
 
 // Find elements on the page
 const destInput = document.getElementById('destination-input')
@@ -28,7 +16,7 @@ function loadReviews() {
   if (!raw) return []
   try {
     return JSON.parse(raw)
-  } catch (e) {
+  } catch {
     return []
   }
 }
@@ -42,7 +30,7 @@ function saveReviews(arr) {
 function getCurrentUser() {
   const raw = localStorage.getItem('currentUser')
   if (!raw) return null
-  try { return JSON.parse(raw) } catch (e) { return null }
+  try { return JSON.parse(raw) } catch { return null }
 }
 
 // Simple id generator
@@ -50,23 +38,43 @@ function makeId() {
   return 'r' + Math.random().toString(36).substring(2, 9)
 }
 
+// Escape text for safety ✅ FIXED
+function escapeHtml(str) {
+  if (!str) return ''
+  return str.replace(/[&<>"']/g, ch => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[ch]))
+}
+
 // Show reviews for typed destination
 function renderReviews() {
   const dest = destInput.value.trim().toLowerCase()
+
   if (!dest) {
     listEl.textContent = 'Enter a destination to see reviews.'
     return
   }
 
-  const all = loadReviews().filter(r => r.destination.toLowerCase() === dest)
+  const all = loadReviews().filter(r =>
+    (r.destination || '').toLowerCase() === dest
+  )
 
-  // sort
+  // Sort
   const sort = sortSelect ? sortSelect.value : 'newest'
-  if (sort === 'newest') all.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
-  else if (sort === 'oldest') all.sort((a,b) => new Date(a.createdAt) - new Date(b.createdAt))
-  else if (sort === 'highest') all.sort((a,b) => (b.rating||0) - (a.rating||0))
+  if (sort === 'newest') {
+    all.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+  } else if (sort === 'oldest') {
+    all.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+  } else if (sort === 'highest') {
+    all.sort((a, b) => (b.rating || 0) - (a.rating || 0))
+  }
 
   listEl.innerHTML = ''
+
   if (all.length === 0) {
     listEl.textContent = 'No reviews yet for this destination.'
     return
@@ -78,8 +86,10 @@ function renderReviews() {
     const card = document.createElement('div')
     card.className = 'review-card'
 
+    const rating = Number(r.rating) || 0
+
     const h = document.createElement('div')
-    h.innerHTML = `<strong>${escapeHtml(r.title)}</strong> — ${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}`
+    h.innerHTML = `<strong>${escapeHtml(r.title)}</strong> — ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}`
     card.appendChild(h)
 
     const meta = document.createElement('div')
@@ -107,7 +117,7 @@ function renderReviews() {
     })
     actions.appendChild(likeBtn)
 
-    // Delete (owner only)
+    // Delete button (owner only)
     if (user && user.email && r.authorEmail === user.email) {
       const del = document.createElement('button')
       del.textContent = 'Delete'
@@ -126,58 +136,50 @@ function renderReviews() {
   })
 }
 
-// Escape text for safety
-function escapeHtml(str) {
-  if (!str) return ''
-  return str.replace(/[&<>"']/g, ch => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[ch]))
-}
-
 // Post a new review
 postBtn.addEventListener('click', () => {
   errorEl.textContent = ''
+
   const dest = destInput.value.trim()
   const title = titleInput.value.trim()
   const body = bodyInput.value.trim()
   const rating = parseInt(ratingSelect.value, 10)
   const user = getCurrentUser()
 
-  if (!dest) { errorEl.textContent = 'Enter a destination.'; destInput.focus(); return }
-  if (!title) { errorEl.textContent = 'Title is required.'; titleInput.focus(); return }
-  if (!body) { errorEl.textContent = 'Write something.'; bodyInput.focus(); return }
-  if (!rating || rating < 1 || rating > 5) { errorEl.textContent = 'Pick a rating.'; ratingSelect.focus(); return }
+  if (!dest) { errorEl.textContent = 'Enter a destination.'; return }
+  if (!title) { errorEl.textContent = 'Title is required.'; return }
+  if (!body) { errorEl.textContent = 'Write something.'; return }
+  if (!rating || rating < 1 || rating > 5) { errorEl.textContent = 'Pick a rating.'; return }
 
   const reviews = loadReviews()
+
   const newReview = {
     id: makeId(),
-    destination: dest,
-    title: title,
-    rating: rating,
-    body: body,
+    destination: dest.toLowerCase(), // ✅ normalize
+    title,
+    rating,
+    body,
     likes: 0,
     authorName: user ? (user.name || user.email) : 'Anonymous',
     authorEmail: user ? user.email : '',
     createdAt: new Date().toISOString()
   }
+
   reviews.push(newReview)
   saveReviews(reviews)
 
-  // clear form
+  // Clear form
   destInput.value = ''
   titleInput.value = ''
   ratingSelect.value = '5'
   bodyInput.value = ''
 
-  // re-render
   renderReviews()
 })
 
-// When destination input or sort changes, re-render
+// Live re-render
 destInput.addEventListener('input', renderReviews)
 if (sortSelect) sortSelect.addEventListener('change', renderReviews)
 
 // Start
-window.addEventListener('DOMContentLoaded', () => {
-  renderReviews()
-})
+window.addEventListener('DOMContentLoaded', renderReviews)
