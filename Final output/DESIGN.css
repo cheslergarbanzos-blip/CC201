@@ -1,3 +1,5 @@
+/* GENERAL */
+
 * {
     font-family: 'Trebuchet MS';
 }
@@ -7,6 +9,12 @@
     background-color: rgb(255, 204, 0);
     float: right;
     border-radius: 5px;
+}
+
+#error-message {
+    color: red;
+    display: block;
+    text-align: center;
 }
 
 
@@ -117,11 +125,7 @@ nav {
     flex-wrap: wrap;
 }
 
-#error-message {
-    color: red;
-    display: block;
-    text-align: center;
-}
+
 
 /* HOMEPAGE */
 
@@ -173,4 +177,71 @@ nav {
 .about-wrapper {
     padding-left: 50px;
     padding-top: 100px;
+}
+
+.Background {
+    padding-right: 50px;
+}
+
+/* REVIEW PAGE */
+
+.reviews-wrapper {
+    padding-left: 50px;
+    padding-top: 100px;
+
+}
+
+.destination-row {
+    margin-bottom: 10px;
+}
+
+#destination-select {
+    background-color: rgb(255, 204, 0);
+    border-radius: 5px;
+    width: 170px;
+}
+
+#review-title {
+    width: 300px;
+    margin: 2px 0;
+    border: 1px solid #ffc800;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#rating-wrapper {
+    margin-top: 10px;
+}
+
+#review-rating {
+    border: 1px solid #ffc800;
+}
+
+#review-body {
+    border: 1px solid #ffc800;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    width: 500px;
+    height: 100px;
+}
+
+#post-review {
+    margin-top: 10px;
+    background-color: rgb(255, 204, 0);
+    border-radius: 5px;
+}
+
+#sort-select {
+    background-color: rgb(255, 204, 0);
+    border-radius: 5px;
+}
+
+.reviews-wrapper hr {
+  width: calc(100% + 50px); 
+  margin-left: -50px; 
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: rgb(255, 204, 0);
+
 }

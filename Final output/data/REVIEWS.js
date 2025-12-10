@@ -1,4 +1,16 @@
+<<<<<<< HEAD
 // REVIEWS.js — user types destination instead of selecting
+=======
+// List of places in Iloilo
+const DESTINATIONS = [
+  { id: 'iloilo-river', name: 'Iloilo River Esplanade' },
+  { id: 'miagao-church', name: 'Miagao Church' },
+  { id: 'molo-church', name: 'Molo Church' },
+  { id: 'jaro-cathedral', name: 'Jaro Cathedral' },
+  { id: 'gigantes-islands', name: 'Gigantes Islands' },
+  { id: 'guimaras-island', name: 'Guimaras Island' }
+]
+>>>>>>> 62d4e9f87c9b8101b25028734704c2129089ded6
 
 // Find elements on the page
 const destInput = document.getElementById('destination-input')
