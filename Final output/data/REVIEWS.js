@@ -189,7 +189,7 @@ function displayPopularReviews() {
   const reviews = loadReviews()
   
   if (reviews.length === 0) {
-    container.innerHTML = '<p>No reviews yet. Be the first to post one!</p>'
+    container.innerHTML = '<p> No reviews yet. Be the first to post one!</p>'
     return
   }
 

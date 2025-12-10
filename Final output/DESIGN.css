@@ -152,6 +152,88 @@ nav {
     padding-top: 100px;
 }
 
+/* SEARCH RESULTS */
+#search-results {
+    margin-top: 30px;
+}
+
+#clear-search {
+    background-color: rgb(255, 204, 0);
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-top: 15px;
+    cursor: pointer;
+    border: none;
+}
+
+.destination-card {
+    background-color: #fff9e6;
+    border: 2px solid #ffc800;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.destination-card h3 {
+    margin-top: 0;
+    color: #7F5638;
+}
+
+.dest-location {
+    color: #666;
+    margin: 5px 0;
+}
+
+.destination-card a {
+    color: #7F5638;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.destination-card a:hover {
+    text-decoration: underline;
+}/* SEARCH RESULTS */
+#search-results {
+    margin-top: 30px;
+}
+
+#clear-search {
+    background-color: rgb(255, 204, 0);
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-top: 15px;
+    cursor: pointer;
+    border: none;
+}
+
+.destination-card {
+    background-color: #fff9e6;
+    border: 2px solid #ffc800;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.destination-card h3 {
+    margin-top: 0;
+    color: #7F5638;
+}
+
+.dest-location {
+    color: #666;
+    margin: 5px 0;
+}
+
+.destination-card a {
+    color: #7F5638;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.destination-card a:hover {
+    text-decoration: underline;
+}v
+
 /* PROFILE */
 .profile-wrapper {
     padding-left: 50px;
