@@ -1,6 +1,3 @@
-// REVIEWS.js — user types destination instead of selecting
-
-// Find elements on the page
 const destInput = document.getElementById('destination-input')
 const titleInput = document.getElementById('review-title')
 const ratingSelect = document.getElementById('review-rating')
@@ -38,7 +35,7 @@ function makeId() {
   return 'r' + Math.random().toString(36).substring(2, 9)
 }
 
-// Escape text for safety ✅ FIXED
+// Escape text for safety
 function escapeHtml(str) {
   if (!str) return ''
   return str.replace(/[&<>"']/g, ch => ({
@@ -155,7 +152,7 @@ postBtn.addEventListener('click', () => {
 
   const newReview = {
     id: makeId(),
-    destination: dest.toLowerCase(), // ✅ normalize
+    destination: dest.toLowerCase(),
     title,
     rating,
     body,
@@ -169,11 +166,10 @@ postBtn.addEventListener('click', () => {
   saveReviews(reviews)
 
   // Clear form
-  destInput.value = ''
   titleInput.value = ''
   ratingSelect.value = '5'
   bodyInput.value = ''
-
+  
   renderReviews()
 })
 

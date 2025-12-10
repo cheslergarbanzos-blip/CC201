@@ -68,7 +68,12 @@ body {
 
 
 
-#input-field {
+/* INPUT FIELDS - add after #input-field */
+#email-input,
+#password-input,
+#name-input,
+#birthday-input,
+#repeat-password-input {
     width: 100%;
     padding: 10px;
     margin: 2px 0;
@@ -76,6 +81,12 @@ body {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+.Incorrect {
+    border: 2px solid red !important;
+    border-radius: 4px;
+}
+
 
 /* SIGN UP HTML */
 
