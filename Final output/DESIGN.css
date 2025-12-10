@@ -4,11 +4,33 @@
     font-family: 'Trebuchet MS';
 }
 
+/* LOGIN PAGE INPUTS - PRIORITY */
+.login-wrapper input {
+    width: 100% !important;
+    padding: 10px !important;
+    margin: 10px 0 !important;
+    border: 1px solid #ffc800 !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    background-color: white !important;
+}
+
+.login-wrapper input[type="submit"],
+.login-wrapper .btn {
+    background-color: rgb(255, 204, 0) !important;
+    color: black !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
 #y-button {
-    margin-top: 3px;
+    margin-top: 10px;
     background-color: rgb(255, 204, 0);
-    float: right;
     border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 #error-message {
@@ -70,15 +92,39 @@ body {
 
 .login-wrapper {
     background-color: white;
-    width: 300px;
-    max-height: 400px;
-    padding: 70px 40px;
+    width: 320px;
+    min-height: 400px;
+    padding: 50px 35px;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.login-wrapper input[type="text"],
+.login-wrapper input[type="password"],
+.login-wrapper input[type="email"] {
+    width: 100% !important;
+    padding: 10px !important;
+    margin: 10px 0 !important;
+    border: 1px solid #ffc800 !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+.login-wrapper input[type="submit"] {
+    width: 100% !important;
+    padding: 10px 20px !important;
+    margin-top: 15px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    background-color: rgb(255, 204, 0) !important;
+    color: black !important;
+    cursor: pointer !important;
+    display: block !important;
 }
 
 #signup-link,
@@ -93,13 +139,43 @@ body {
 #password-input,
 #name-input,
 #birthday-input,
-#repeat-password-input {
+#repeat-password-input,
+.from-control,
+.form-control,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"] {
+    width: 100% !important;
+    padding: 10px !important;
+    margin: 2px 0 !important;
+    border: 1px solid #ffc800 !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+}
+
+.form-group {
+    margin-bottom: 10px !important;
+}
+
+.form-btn {
+    margin-top: 15px !important;
+}
+
+.btn,
+input[type="submit"] {
     width: 100%;
-    padding: 10px;
-    margin: 2px 0;
-    border: 1px solid #ffc800;
-    border-radius: 4px;
-    box-sizing: border-box;
+    padding: 10px 20px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    background-color: rgb(255, 204, 0) !important;
+    color: black !important;
+}
+
+.btn-primary {
+    background-color: rgb(255, 204, 0) !important;
+    color: black !important;
 }
 
 .Incorrect {
@@ -357,4 +433,3 @@ nav {
   margin-bottom: 20px;
   background-color: rgb(255, 204, 0);
 }
-
