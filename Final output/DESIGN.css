@@ -337,12 +337,27 @@ nav {
 }
 
 #edit-btn, 
-#delete-btn {
+#logout-btn {
     margin-top: 3px;
     margin-left: 10px;
     background-color: rgb(255, 204, 0);
     float: left;
     border-radius: 5px;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+#delete-btn {
+    margin-top: 3px;
+    margin-left: 10px;
+    background-color: #dc3545;
+    color: white;
+    float: left;
+    border-radius: 5px;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
 }
 
 #search-field {
