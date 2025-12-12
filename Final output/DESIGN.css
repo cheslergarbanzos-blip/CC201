@@ -248,7 +248,6 @@ nav {
     padding-top: 100px;
 }
 
-/* SEARCH RESULTS */
 #search-results {
     margin-top: 30px;
 }
@@ -266,70 +265,53 @@ nav {
     background-color: #fff9e6;
     border: 2px solid #ffc800;
     border-radius: 8px;
+    max-width: 900px;
     padding: 20px;
     margin-bottom: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
 }
 
-.destination-card h3 {
-    margin-top: 0;
-    color: #7F5638;
-}
-
-.dest-location {
-    color: #666;
-    margin: 5px 0;
-}
-
-.destination-card a {
-    color: #7F5638;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.destination-card a:hover {
-    text-decoration: underline;
-}/* SEARCH RESULTS */
-#search-results {
-    margin-top: 30px;
-}
-
-#clear-search {
-    background-color: rgb(255, 204, 0);
+.dest-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
     border-radius: 5px;
-    padding: 8px 15px;
-    margin-top: 15px;
-    cursor: pointer;
-    border: none;
+    flex-shrink: 0;
 }
 
-.destination-card {
-    background-color: #fff9e6;
-    border: 2px solid #ffc800;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 15px;
+.dest-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .destination-card h3 {
     margin-top: 0;
+    margin-bottom: 10px;
     color: #7F5638;
 }
 
 .dest-location {
     color: #666;
-    margin: 5px 0;
+    margin: 5px 0 15px 0;
+}
+
+.destination-card p {
+    margin: 0 0 15px 0;
 }
 
 .destination-card a {
     color: #7F5638;
     text-decoration: none;
     font-weight: bold;
+    margin-top: auto;
 }
 
 .destination-card a:hover {
     text-decoration: underline;
-}v
-
+}
 /* PROFILE */
 .profile-wrapper {
     padding-left: 50px;
@@ -361,7 +343,7 @@ nav {
 }
 
 #search-field {
-    width: 500px;
+    max-width: 500px;
     margin: 2px 0;
     border: 1px solid #ffc800;
     border-radius: 4px;
@@ -372,6 +354,8 @@ nav {
     margin: auto 0;
     margin-top: 3px;
     margin-left: 10px;
+    max-width: 200px;
+    max-height: 100px;
     background-color: rgb(255, 204, 0);
     border-radius: 5px;
 }
